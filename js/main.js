@@ -6,26 +6,44 @@
 *
 * */
 
-const $ciudad = document.querySelector('#carta-a-santa').ciudad.value;
-const $descripcionRegalo = document.querySelector('#carta-a-santa')['descripcion-regalo'];
+const $form = document.querySelector('#carta-a-santa');
+
+const nombre = $form.nombre.value;
+const ciudad = $form.ciudad.value;
+const $descripcionRegalo = document.querySelector('[name=descripcion-regalo]');
+
+function validarNombre(nombre) {
+    if (nombre.length === 0) {
+        return 'Este campo debe tener al menos 1 caracter.';
+    }
+
+    if (nombre.length >= 50) {
+        return 'Este campo debe tener menos de 50 caracteres';
+    }
+
+    return '';
+}
 
 function validarCiudad(ciudad) {
     if (ciudad === '') {
         return 'Debes elegir alguna ciudad.';
     }
+
+    return '';
 }
 
 function validarDescripcionRegalo(descripcion) {
-    if (descripcion.textContent === '') {
+    if (descripcion.length === 0) {
         return 'Debes escribir una descripcion del regalo que quieres.';
     }
+
+    return '';
 }
 
 document.querySelector('#enviar-carta').onclick = function(event) {
-    validarCiudad($ciudad);
+    validarNombre(nombre)
+    validarCiudad(ciudad);
     validarDescripcionRegalo($descripcionRegalo);
     
-    probarValidarCiudad($ciudad);
-    probarValidarDescripcionRegalo($descripcionRegalo);
     event.preventDefault();
 };
