@@ -12,4 +12,19 @@ function probarValidarNombre() {
   );
 }
 
-probarValidarNombre();
+function probarValidarCiudad() {
+    console.assert(
+        validarCiudad('') === 'Debes elegir alguna ciudad.',
+        'Validar ciudad no valido que la ciudad haya sido seleccionada.',
+    );
+}
+
+function probarValidarDescripcionRegalo() {
+    console.assert(
+        validarDescripcionRegalo('') === 'Debes escribir una descripcion del regalo que quieres.',
+        'Validar descripcion regalo no valido que el texto no sea vacio,'
+    );
+}
+//probarValidarNombre();
+probarValidarCiudad();
+probarValidarDescripcionRegalo();
