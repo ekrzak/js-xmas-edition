@@ -6,11 +6,6 @@
 *
 * */
 
-const $form = document.querySelector('#carta-a-santa');
-
-const nombre = $form.nombre.value;
-const ciudad = $form.ciudad.value;
-const descripcionRegalo = $form['descripcion-regalo'].value;
 
 function validarNombre(nombre) {
     if (nombre.length === 0) {
@@ -60,7 +55,15 @@ function validarForm(event) {
         'descripcion-regalo': validarDescripcionRegalo(descripcionRegalo)
     }; 
     
-    manejarErrores(errores);
+    const esExito = manejarErrores(errores) === 0;
+
+    if (esExito) {
+        $form.classList.add('oculto');
+        document.querySelector('#exito').classList.remove('oculto');
+        window.setTimeout(function() {
+            window.location.href = `C:/Users/Esteban/Desktop/WebDev/r-argentinaprograma/js-xmas-edition/wishlist.html`;
+        }, 2000);
+    }
 
     event.preventDefault();
 }
@@ -82,14 +85,9 @@ function manejarErrores(errores) {
 
     });
 
-    if (!cantidadErrores) {
-        $form.classList.add('oculto');
-        document.querySelector('#exito').classList.remove('oculto');
-        window.setTimeout(function() {
-            window.location.href = `C:/Users/Esteban/Desktop/WebDev/r-argentinaprograma/js-xmas-edition/wishlist.html`;
-        }, 5000);
-    }
+    return cantidadErrores;
     
 }
 
+const $form = document.querySelector('#carta-a-santa');
 $form.onsubmit = validarForm;
