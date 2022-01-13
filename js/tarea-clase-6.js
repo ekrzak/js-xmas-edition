@@ -83,34 +83,6 @@ function crearInputsDeSueldos(cantidadIntegrantes) {
     }
 }
 
-function obtenerElMenor(arreglo) {
-    let esElMenor = arreglo[0];
-    for (let i = 0; i < arreglo.length; i++) {
-        if (esElMenor > arreglo[i]) {
-            esElMenor = arreglo[i];
-        }
-    }
-    return esElMenor;
-}
-
-function obtenerElMayor(arreglo) {
-    let esElMayor = arreglo[0];
-    for (let i = 0; i < arreglo.length; i++) {
-        if (esElMayor < arreglo[i]) {
-            esElMayor = arreglo[i];
-        }
-    }    
-    return esElMayor;
-}
-
-function obtenerElPromedio(arreglo) {
-    let suma = 0;
-    for (let i = 0; i < arreglo.length; i++) {
-        suma += arreglo[i];
-    }
-    return (suma / arreglo.length);
-}
-
 document.querySelector('#ingresar').onclick = () => {
     const cantidadDeIntegrantes = $cantidadIntegrantes.value;
     // Crea los inputs para ingresar las edades
