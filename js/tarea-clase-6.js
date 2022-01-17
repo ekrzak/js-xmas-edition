@@ -21,6 +21,34 @@ function validarIntegrantes(cantidadIntegrantes) {
     return true;
 }
 
+function validarEdades(listaEdades) {
+    const nuevoArreglo = [];
+    listaEdades.forEach(function(edad) {
+        if (Number(edad.value) >= 0 && Number.isInteger(Number(edad.value))) {
+            nuevoArreglo.push(Number(edad.value));
+        } else {
+            edad.disabled = true;
+            edad.style.backgroundColor = 'pink';
+        } 
+    });
+    
+    return nuevoArreglo;
+}
+
+function validarSueldos(listaSueldos) {
+    const nuevoArreglo = [];
+    listaSueldos.forEach(function(sueldo) {
+        if (sueldo.value === '' || Number(sueldo.value) < 0) {
+            sueldo.disabled = true;
+            sueldo.style.backgroundColor = 'pink';
+        } else {
+            nuevoArreglo.push(Number(sueldo.value));
+        }
+    });
+    
+    return nuevoArreglo;
+}
+
 function crearInputsPorIntegrante(cantidadIntegrantes) {
     
     for (let i = 0; i < cantidadIntegrantes; i++) {
@@ -107,20 +135,11 @@ document.querySelector('#ingresar').onclick = () => {
         document.querySelector('#boton-calcular').onclick = () => {
             // Pasa a array los values de la NodeList de los inputs
             const listaDeEdadesListaDeNodos = document.querySelectorAll('.edades-personas');
-            const listaDeEdades = [];
+            const listaDeEdades = validarEdades(listaDeEdadesListaDeNodos);
 
-            listaDeEdadesListaDeNodos.forEach(function(el) {
-                if (Number(el.value) >= 0) {
-                    listaDeEdades.push(Number(el.value));
-                } else {
-                    el.disabled = true;
-                    el.style.backgroundColor = 'pink';
-                }
-
-            });
             
             if (listaDeEdades.length !== listaDeEdadesListaDeNodos.length) { // Manda mensaje de alerta
-                alert('Ingresaste números negativos; no serán tenido en cuenta para los cálculos');
+                alert('Ingresaste números negativos o con decimales; no serán tenidos en cuenta para los cálculos');
             }         
             // Expresa los resultados
             document.querySelector('#mayor-edad').textContent = `La persona de mayor edad tiene ${obtenerElMayor(listaDeEdades)} años.`;
@@ -129,16 +148,8 @@ document.querySelector('#ingresar').onclick = () => {
 
             // Pasa a array los valores de la NodeList de sueldos
             const listaDeSueldosListaDeNodos = document.querySelectorAll('.sueldos-personas');
-            const listaDeSueldos = [];
+            const listaDeSueldos = validarSueldos(listaDeSueldosListaDeNodos);
 
-            listaDeSueldosListaDeNodos.forEach(function(el) {
-                if (el.value === '' || Number(el.value) < 0) {
-                    el.disabled = true;
-                    el.style.backgroundColor = 'pink';
-                } else {
-                    listaDeSueldos.push(Number(el.value));
-                }     
-            });
             if (listaDeSueldos.length !== listaDeSueldosListaDeNodos.length) { // Manda mensaje de alerta
                 alert('Te faltó ingresar algún sueldo o ingresaste números negativos; no serán tenidos en cuenta para los cálculos');
             }         
