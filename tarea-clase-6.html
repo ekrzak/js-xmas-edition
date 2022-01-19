@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/tarea-clase-6.css">
+    <title>Tarea clase-6</title>
+</head>
+<body>
+    <h1>Tu grupo familiar</h1>
+    <div>
+        <p>Cuánta gente hay en tu grupo familiar?</p>
+        <label for="cantidad-integrantes">Escribe la cantidad de integrantes</label>
+        <input type="number" id="cantidad-integrantes" placeholder="Ej. 2">
+        <button type="submit" id="ingresar">Ingresar</button>
+    </div>
+    <form id="lista-integrantes">
+        <div id="edades-y-sueldos"></div>        
+        <div id="botones">
+            <input type="submit" value="Calcular" id="boton-calcular" class="oculto">
+            <input type="reset" value="Limpiar" id="boton-limpiar" class="oculto">
+            <input type="submit" value="Agregar sueldos" id="boton-agregar-sueldos" class="oculto">
+            <input type="reset" value="Quitar sueldos" id="boton-quitar-sueldos" class="oculto">
+        </div>
+    </form>
+    <div>
+        <p id="mayor-edad"></p>
+        <p id="menor-edad"></p>
+        <p id="promedio-edad"></p>
+    </div>
+    <div>
+        <p id="mayor-salario-anual"></p>
+        <p id="menor-salario-anual"></p>
+        <p id="promedio-salario-anual"></p>
+        <p id="promedio-salario-mensual"></p>
+    </div>
+
+
+    <script src="./js/calculos-tarea-clase-6.js"></script>
+    <script src="./js/tarea-clase-6.js"></script>
+    <script src="./js/pruebas-tarea-clase-6.js"></script>
+</body>
+</html>
